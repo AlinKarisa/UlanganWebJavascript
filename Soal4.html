@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soal 4</title>
+    <link rel="stylesheet" href="Soal1.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+          .container2 {
+        text-align: center;
+        margin: 20px;
+      }
+
+      h1 {
+        margin-left: 20px;
+        display: inline;
+      }
+
+      .back-button {
+        padding: 10px;
+        background-color: #0074d9;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 50px;
+        margin-left: 20px;
+      }
+
+      .back-button:hover {
+        background-color: #0056b3;
+      }
+
+      .input-container {
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 10px;
+        display: inline-block;
+        text-align: center;
+        max-width: 500px; /* Menetapkan lebar maksimal kotak */
+        margin: 0 auto; /* Membuat kotak berada di tengah dengan margin otomatis */
+        margin-top: 20px;
+      }
+
+      label {
+        display: block;
+        margin: 10px 0;
+      }
+
+      input {
+        padding: 5px;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #0074d9;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 15px;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      p {
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 30px;
+        margin-left: 10px;
+        margin-right: 20px;
+      }
+  </style>
+    </head>
+  <body>
+    <body>
+
+        <button class="back-button" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+        <h1>Program Kasir</h1>
+        <hr>      
+        <div class="container2">
+        <div class="input-container">
+            <div>
+                <label for="harga">Harga Barang:</label>
+                <input type="number" id="harga">
+            </div>
+            <div>
+                <label for="uang">Jumlah Uang Dibayarkan:</label>
+                <input type="number" id="uang">
+            </div>
+            <button onclick="hitungKembalian()">Hitung Kembalian</button>
+            <p>Kembalian <span id="kembalian"></span></p>
+        </div>
+    </div>
+      <script>
+        function goBack() {
+            window.location.href = "index.html";
+        }
+        function hitungKembalian() {
+            var harga = parseFloat(document.getElementById("harga").value);
+            var uang = parseFloat(document.getElementById("uang").value);
+            var kembalianElement = document.getElementById("kembalian");
+
+            if (!isNaN(harga) && !isNaN(uang)) {
+                if (uang >= harga) {
+                    var kembalian = uang - harga;
+                    kembalianElement.textContent = "Rp " + kembalian
+                } else {
+                    kembalianElement.textContent = "Jumlah uang kurang dari harga barang!";
+                }
+            } else {
+                kembalianElement.textContent = "Masukkan angka yang valid.";
+            }
+        }
+      </script>
+  </body>
+</html>
